@@ -71,29 +71,54 @@ namespace WPF_ZooManager
 
         private void ShowAssociatedAnimals()
         {
-            string query = "select * from Animal a inner join ZooAnimal " +
-                "za on za.AnimalId = a.Id where za.ZooId = @ZooId";
-
-            SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
-
-            using (sqlDataAdapter)
+            
+            try
             {
-                sqlCommand.Parameters.AddWithValue("@ZooId", listZoos.SelectedValue);
-                
-                DataTable animalTable = new DataTable();
-                sqlDataAdapter.Fill(animalTable);
+                string query = "select * from Animal a inner join ZooAnimal " +
+                               "za on za.AnimalId = a.Id where za.ZooId = @ZooId";
 
-                listAssociatedAnimals.DisplayMemberPath = "Name";
-                listAssociatedAnimals.SelectedValuePath = "Id";
-                listAssociatedAnimals.ItemsSource = animalTable.DefaultView;
+                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+
+                using (sqlDataAdapter)
+                {
+                    sqlCommand.Parameters.AddWithValue("@ZooId", listZoos.SelectedValue);
+
+                    DataTable animalTable = new DataTable();
+                    sqlDataAdapter.Fill(animalTable);
+
+                    listAssociatedAnimals.DisplayMemberPath = "Name";
+                    listAssociatedAnimals.SelectedValuePath = "Id";
+                    listAssociatedAnimals.ItemsSource = animalTable.DefaultView;
+                }
             }
+
+            catch (Exception e)
+            {
+
+            }
+
+            
 
         }
 
         private void listZoos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ShowAssociatedAnimals();
+        }
+
+        private void DeleteZoo_Click(object sender, RoutedEventArgs e)
+        {
+            string query = "delete from Zoo where Id = @ZooId";
+
+            SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+            sqlConnection.Open();
+            sqlCommand.Parameters.AddWithValue("@ZooId", listZoos.SelectedValue);
+
+            sqlCommand.ExecuteScalar();
+
+            sqlConnection.Close();
+            ShowZoos();
         }
     }
 }
