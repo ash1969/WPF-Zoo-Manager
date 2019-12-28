@@ -18,13 +18,13 @@
 
         <Button Content="Delete Zoo" HorizontalAlignment="Left" Margin="10,234,0,0" VerticalAlignment="Top" Width="158" Height="29" Click="DeleteZoo_Click"/>
         <Button Content="Remove Animal" HorizontalAlignment="Left" Margin="219,234,0,0" VerticalAlignment="Top" Width="158" Height="29"/>
-        <Button Content="Add Zoo" HorizontalAlignment="Left" Margin="10,314,0,0" VerticalAlignment="Top" Width="158" Height="29"/>
-        <Button Content="Add Animal" HorizontalAlignment="Left" Margin="219,314,0,0" VerticalAlignment="Top" Width="158" Height="29"/>
+        <Button Click="AddZoo_Click" Content="Add Zoo" HorizontalAlignment="Left" Margin="10,314,0,0" VerticalAlignment="Top" Width="158" Height="29"/>
+        <Button Click="AddAnimal_Click" Content="Add Animal" HorizontalAlignment="Left" Margin="219,314,0,0" VerticalAlignment="Top" Width="158" Height="29"/>
         <Button Content="Update Zoo" HorizontalAlignment="Left" Margin="10,348,0,0" VerticalAlignment="Top" Width="158" Height="29"/>
         <Button Content="Update Animal" HorizontalAlignment="Left" Margin="219,348,0,0" VerticalAlignment="Top" Width="158" Height="29"/>
-        <Button Content="Add Animal To Zoo" HorizontalAlignment="Left" Margin="415,10,0,0" VerticalAlignment="Top" Width="158" Height="29"/>
-        <Button Content="Delete Animal" HorizontalAlignment="Left" Margin="415,348,0,0" VerticalAlignment="Top" Width="158" Height="29"/>
-        <TextBox HorizontalAlignment="Left" Height="41" Margin="10,268,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="367"/>
+        <Button Click="addAnimalToZoo_Click" Content="Add Animal To Zoo" HorizontalAlignment="Left" Margin="415,10,0,0" VerticalAlignment="Top" Width="158" Height="29"/>
+        <Button Click="DeleteAnimal_Click" Content="Delete Animal" HorizontalAlignment="Left" Margin="415,348,0,0" VerticalAlignment="Top" Width="158" Height="29"/>
+        <TextBox Name="myTextBox" HorizontalAlignment="Left" Height="41" Margin="10,268,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="367"/>
 
 
     </Grid>
